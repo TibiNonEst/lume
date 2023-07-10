@@ -87,11 +87,10 @@ export default function (userOptions?: Partial<Options>) {
               ? pathname.slice(baseFilename.length)
               : mainPath;
             const { formats } = site;
-            const { includes } = site.options;
 
             for (const path of getPathsToLook(includePath)) {
               const format = formats.search(pathname);
-              const includesPath = format?.includesPath ?? includes;
+              const includesPath = format?.includesPath ?? options.includes;
               const resolved = resolveInclude(path, includesPath);
               const entry = entries.get(resolved);
 
